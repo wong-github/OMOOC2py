@@ -6,5 +6,7 @@
     "plugins": [
         "disqus"
     ],
-    "pluginsConfig": {}
+    "pluginsConfig": {
+        "shortName": "wonggithub"
+    }
 }
