@@ -7,6 +7,8 @@
         "disqus"
     ],
     "pluginsConfig": {
-        "shortName": "<wongben>"
+    "disqus":{
+        "shortName": "wongben"
+    }
     }
 }
