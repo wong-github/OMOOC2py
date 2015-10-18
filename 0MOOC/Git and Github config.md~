@@ -26,7 +26,7 @@ OS：Ubuntu 14.04
 ##将Github上的仓库克隆到本地
  - $ git clone git@github.com:wong-github/OMOOC2py.git
 
-   //用上面的clone命令所得到的本地仓库可以支持git push命令；还有一种形式的clone命令：$ git clone git://github.com/wong-github/OMOOC2py.git，该命令的协议不支持push，这点需要注意
+   //用上面的clone命令所得到的本地仓库可以支持git push命令；还有一种形式的clone命令：$ git clone git://github.com/wong-github/OMOOC2py.git，该命令的协议不支持push，这点需要主要
 
 ##首次推送
  - $ cd OMOOC2py    //进入推送目录（OMOOC2py是之前clone的仓库，直接使用该仓库作为推送目录）
