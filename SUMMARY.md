@@ -3,6 +3,8 @@
  + [Week 0]
    * [Git与Github的配置过程](0MOOC/Week0/Git and Github config.md)
    * [0wd4公开课纪要](0MOOC/Week0/0wd4 Note.md)
+ + [Week 1]
+   * [极简交互式本地日记系统编程记录](0MOOC/Week1/Week1 Programming Record.md)
 - [基础旋进](1sTry/README.md)
 - [迭代作品](2nDev/README.md)
 - [人生首秀](3rDemo/README.md)
