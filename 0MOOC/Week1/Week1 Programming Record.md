@@ -8,7 +8,7 @@
 + python脚本的调用，外部数据输入（包括中文数据），持续交互与终止，文件操作
 
 ##整体流程框图
- ![W1 liuchengtu.png](/home/wong/OMOOC2py/0MOOC/Week1/W1 liuchengtu.png)
+ ![W1 liuchengtu](W1 liuchengtu.png)
 
 ##相关流程的代码实现
 * 首次输入检测
