@@ -11,6 +11,7 @@
 - [人生首秀](3rDemo/README.md)
 - [代码 (_src)](_src/README.md)
  + [Week 1 src](_src/om2py0w/0wex1/README.md)
+ + [Week 2 src](_src/om2py2w/2wex0/README.md)
 - [素材 (draft)](draft/README.md)
  + [教程该怎么写](draft/how2tutorial.md)
 - [有关](ABOUT.md)
