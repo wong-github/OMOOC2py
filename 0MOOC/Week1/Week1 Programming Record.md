@@ -10,6 +10,40 @@
 ##整体流程框图
  ![W1 liuchengtu](W1 liuchengtu.png)
 
+##代码
+
+        # -*- coding: utf-8 -*-
+        #!/usr/bin/env python
+
+        _author_ = 'Wills Wong'
+
+        import os
+
+        if os.path.exists('/home/wong/test.txt') == True:
+            print '\n*** Here is your writting record ***\n\n'
+            with open('/home/wong/test.txt','r') as f:
+                print f.read()
+                
+        print '\nNow you can start writing:\n'
+        print 'PS: When you complete writing, please hit "Q" or "q" !\n'
+
+        line = 0
+
+        while True:
+            try:
+                line_num = 'Line %d :' % line
+                a = raw_input(line_num) + '\n'
+                if a == 'Q\n' or a == 'q\n':		
+                    print '\n\nThanks for using. Goodbye! ^_^\n'
+                    break
+                with open('/home/wong/test.txt','a') as f:
+                    f.write(a)
+                line += 1
+            except KeyboardInterrupt:
+                print '\n\nError! You can not hit "Ctrl-C" when you writing, it will interupt input and the current line will lose!\n'
+                break
+
+
 ##相关流程的代码实现
 * 首次输入检测
  + 系统需求中提到，当系统再次运行时，需要打印出过往的所有日记。由此引发了一个问题：对于首次使用系统的用户来说，本地并无日志记录，这种情况下应该不执行历史日志的输出。因此需要甄别用户是否首次使用该系统。
