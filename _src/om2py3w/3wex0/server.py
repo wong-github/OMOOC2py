@@ -19,7 +19,7 @@ def main():
             newContent, addr = s.recvfrom(2048)
             savepath = '/home/wong/slog/' + uname + '/server_diary.txt'
             with open(savepath, 'a') as f:
-                f.write(newContent)
+                f.write('\n' + newContent)
             print 'File was saved successfully @ %s,%s' %(addr)
 
         if data == '-*-historyContent-*-':

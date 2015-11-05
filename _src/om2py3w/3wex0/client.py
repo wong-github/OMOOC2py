@@ -47,20 +47,23 @@ def main():
 
     #定义按键“保存并上传”的时间处理函数
     def save_upload():
-        #读取用户的新日记内容并添加时间信息
-        savelog = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + '\n' + test.get(local,END)
-        #文件保存到本地
-        with open('/home/wong/clog/local_diary.txt','a') as f:
-            f.write('\n' + savelog)
-        #读取用户的登陆信息
-        with open('/home/wong/clog/username_temp.txt','r') as f:
-            uname = f.read()      
-        #将用户的新日记上传到服务器端进行保存
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.sendto('-*-saveContent-*-',('127.0.0.1',9999))
-        s.sendto(uname,('127.0.0.1',9999))
-        s.sendto(savelog,('127.0.0.1',9999))
-        s.close
+        if os.path.exists('/home/wong/clog/username_temp.txt') == True:
+            #读取用户的新日记内容并添加时间信息
+            savelog = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + '\n' + test.get(local,END)
+            #文件保存到本地
+            with open('/home/wong/clog/local_diary.txt','a') as f:
+                f.write('\n' + savelog)
+            #读取用户的登陆信息
+            with open('/home/wong/clog/username_temp.txt','r') as f:
+                uname = f.read()      
+            #将用户的新日记上传到服务器端进行保存
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.sendto('-*-saveContent-*-',('127.0.0.1',9999))
+            s.sendto(uname,('127.0.0.1',9999))
+            s.sendto(savelog,('127.0.0.1',9999))
+            s.close
+        else:
+            tkMessageBox.showinfo('Error','您目前还没登陆，请登陆！')
 
     #定义按键“退出”的事件处理函数
     def quit():
@@ -72,33 +75,35 @@ def main():
 
     #定义按键“日记历史”的时间处理函数
     def history():
-        #读取用户的登陆信息
-        with open('/home/wong/clog/username_temp.txt','r') as f:
-            usr_name = f.read()
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.sendto('-*-historyContent-*-', ('127.0.0.1',9999))
-        s.sendto(usr_name, ('127.0.0.1',9999))
-        flag, addr = s.recvfrom(2048) 
-        #首次使用检测     
-        if flag == 'T':
-            #接收服务器发送过来的日记历史
-            testshow, addr = s.recvfrom(2048)
-            #在新窗口中显示日记历史内容，Text和Scrollbar控件的实例化与配置跟主窗口的类似
-            tl = Toplevel()
-            tl.title('我的日记历史')
-            Label(tl, text = '*** Hi 这是您以前的日记 ***', fg = 'red').pack(side = TOP, fill = X)
-            test_tl = Text(tl)
-            slr_tl = Scrollbar(tl)
-            test_tl.config(yscrollcommand = slr_tl.set)
-            slr_tl.config(command = test_tl.yview)
-            test_tl.insert(1.0,testshow)
-            test_tl.pack(side = LEFT, fill = Y)
-            slr_tl.pack(side = LEFT, fill = Y)
-        if flag == 'F':
-            #首次使用软件的用户没有日记历史文件，按下该按键会弹出提示窗口
-            tkMessageBox.showinfo('Error','Sorry，您还没有写过日记呢！赶紧行动起来吧！')
-
-        s.close
+        if os.path.exists('/home/wong/clog/username_temp.txt') == True:
+            #读取用户的登陆信息
+            with open('/home/wong/clog/username_temp.txt','r') as f:
+                usr_name = f.read()
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.sendto('-*-historyContent-*-', ('127.0.0.1',9999))
+            s.sendto(usr_name, ('127.0.0.1',9999))
+            flag, addr = s.recvfrom(2048) 
+            #首次使用检测     
+            if flag == 'T':
+                #接收服务器发送过来的日记历史
+                testshow, addr = s.recvfrom(2048)
+                #在新窗口中显示日记历史内容，Text和Scrollbar控件的实例化与配置跟主窗口的类似
+                tl = Toplevel()
+                tl.title('我的日记历史')
+                Label(tl, text = '*** Hi 这是您以前的日记 ***', fg = 'red').pack(side = TOP, fill = X)
+                test_tl = Text(tl)
+                slr_tl = Scrollbar(tl)
+                test_tl.config(yscrollcommand = slr_tl.set)
+                slr_tl.config(command = test_tl.yview)
+                test_tl.insert(1.0,testshow)
+                test_tl.pack(side = LEFT, fill = Y)
+                slr_tl.pack(side = LEFT, fill = Y)
+            if flag == 'F':
+                #首次使用软件的用户没有日记历史文件，按下该按键会弹出提示窗口
+                tkMessageBox.showinfo('Error','Sorry，您还没有写过日记呢！赶紧行动起来吧！')
+            s.close
+        else:
+            tkMessageBox.showinfo('Error','您目前还没登陆，历史日记需要登陆才能查看，请登陆！')
     
     #定义按键“关于”的事件处理函数
     def about():
