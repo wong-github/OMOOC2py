@@ -20,6 +20,7 @@
  + [Week 2 src](_src/om2py2w/2wex0/README.md)
  + [Week 3 src](_src/om2py3w/3wex0/README.md)
  + [Week 4 src](_src/om2py4w/4wex0/README.md)
+ + [Week 5 src](_src/om2py5w/5wex0/README.md)
 - [素材 (draft)](draft/README.md)
  + [教程该怎么写](draft/how2tutorial.md)
 - [有关](ABOUT.md)
